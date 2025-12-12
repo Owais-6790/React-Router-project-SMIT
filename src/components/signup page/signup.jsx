@@ -1,47 +1,83 @@
 import "./signup.css";
 import Nav from "../navbar/navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+const allUserData = localStorage.getItem("signupData")
+  ? JSON.parse(localStorage.getItem("signupData"))
+  : [];
 
 function Signup() {
+  const [Name, setName] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Number, setNumber] = useState("");
+  const [Password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  function Signupfunct() {
+    if (Name && Email && Number && Password) {
+      if (Email.endsWith("@gmail.com")) {
+        if (Number.startsWith("03") && Number.length == 11) {
+          alert("account created");
+          const signupData = {
+            Name: Name,
+            Email: Email,
+            Number: Number,
+            Password: Password,
+            todos: [],
+          };
+          allUserData.push(signupData);
+          navigate("/login");
+        } else {
+          alert(
+            "Number must have 03 digits in the start and must be of 11 digits"
+          );
+        }
+      } else {
+        alert("invalid email");
+      }
+    } else {
+      alert("please fill all the details");
+    }
+    localStorage.setItem("signupData", JSON.stringify(allUserData));
+  }
+
   return (
     <>
-      <Nav />
       <div className="conatiner">
-        <section id="signUp" class="formstyling">
-          <h1 class="headingstyling">Register</h1>
+        <section id="signUp" className="formstyling">
+          <h1 className="headingstyling">Register</h1>
           <input
-            class="inputstyling"
+            onChange={(e) => setName(e.target.value)}
+            className="inputstyling"
             type="text"
-            id="userName"
             placeholder="Your Name"
           />
           <input
-            class="inputstyling"
+            onChange={(e) => setEmail(e.target.value)}
+            className="inputstyling"
             type="email"
-            id="userEmail"
             placeholder="Your Email"
           />
           <input
-            class="inputstyling"
+            onChange={(e) => setNumber(e.target.value)}
+            className="inputstyling"
             type="number"
-            id="userNumber"
             placeholder="Your Number"
           />
           <input
-            class="inputstyling"
+            onChange={(e) => setPassword(e.target.value)}
+            className="inputstyling"
             type="password"
-            id="userPassword"
             placeholder="Password"
           />
-          <button onclick="signUpInfo()" class="buttonstyling">
-            <Link to="/login">SIGN UP</Link>
+          <button onClick={Signupfunct} className="buttonstyling">
+            SIGN UP
           </button>
-          <p class="parastyling">
+          <p className="parastyling">
             Already have an account ?
-            <Link to="/login">
-              <a class="linkstyling" href="#">
-                Login in
-              </a>
+            <Link className="linkstyling" to="/login">
+              Log In
             </Link>
           </p>
         </section>

@@ -1,41 +1,77 @@
-import "./login.css";
-import Nav from "../navbar/navbar";
-import { Link } from "react-router-dom";
+import "./log.css";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-function loginPage() {
+function LoginPage() {
+  const [allUserData, setallUserData] = useState(
+    localStorage.getItem("signupData")
+      ? JSON.parse(localStorage.getItem("signupData"))
+      : []
+  );
+  const navigate = useNavigate();
+  const [logEmail, setLogEmail] = useState("");
+  const [logpassword, setLogpassword] = useState("");
+  // const [currentUser, setcurrentUser] = useState();
+
+  function LoginFunct() {
+    if (logEmail && logpassword) {
+      if (logEmail.endsWith("@gmail.com")) {
+        let match;
+        for (let i = 0; i < allUserData.length; i++) {
+          if (
+            logEmail === allUserData[i].Email &&
+            logpassword === allUserData[i].Password
+          ) {
+            match = true;
+            const currentUser = {
+              Username: allUserData[i].Name,
+              Email: allUserData[i].Email,
+            };
+            localStorage.setItem("currentUser", JSON.stringify(currentUser));
+            break;
+          } else {
+            match = false;
+          }
+        }
+
+        if (match) {
+          alert(`Login successfull !`);
+          navigate("/");
+        } else {
+          alert(`User not Found`);
+        }
+      } else {
+        alert(`please Enter valid Email`);
+      }
+    } else {
+      alert("please fill all the required details to proceed");
+    }
+  }
+
   return (
     <>
-      <Nav />
-      <div className="conatiner">
-        <section action="" id="loginForm" class="formstyling">
-          <h1 class="headingstyling">Login</h1>
+      <div className="contain">
+        <section className="formstyling">
+          <h1 className="headingstyling">Login</h1>
           <input
-            class="inputstyling"
+            onChange={(e) => setLogEmail(e.target.value)}
+            className="inputstyling"
             type="email"
-            id="loginEmail"
             placeholder="Your Email"
           />
           <input
-            class="inputstyling"
+            onChange={(e) => setLogpassword(e.target.value)}
+            className="inputstyling"
             type="password"
-            id="loginPassword"
             placeholder="Password"
           />
-          <button onclick="loginInfo()" class="buttonstyling">
-            <Link to="/">
-              <a href="#">LOGIN</a>
-            </Link>
+          <button onClick={LoginFunct} className="buttonstyling">
+            LOGIN
           </button>
-          <p class="parastyling">
+          <p className="parastyling">
             Don't have an account ?
-            <Link to="/signup">
-              <a
-                onclick="forAnchorTagOfRegister()"
-                class="linkstyling"
-                href="#"
-              >
-                Resgister
-              </a>
+            <Link className="linkstyling" to="/signup">
+              Resgister
             </Link>
           </p>
         </section>
@@ -44,4 +80,4 @@ function loginPage() {
   );
 }
 
-export default loginPage;
+export default LoginPage;

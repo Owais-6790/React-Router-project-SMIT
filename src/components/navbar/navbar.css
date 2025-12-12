@@ -45,6 +45,7 @@ nav button {
   font-size: 1.1vw;
   font-weight: 600;
   transition: all 0.5s;
+  cursor: pointer;
 }
 
 nav button a {

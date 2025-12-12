@@ -2,26 +2,95 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 90vh;
 }
 
-.heading {
+.Box {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: 1vw;
   background-color: rgb(255, 115, 0);
-  padding: 6vw 10vw;
+  padding: 4vw;
   color: white;
   border-radius: 40px;
+  width: 50%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.226);
 }
 
-.heading a {
-  text-decoration: none;
+.Box h1 {
+  margin-bottom: 1vw;
+}
+
+.input-and-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  width: 100%;
+}
+
+.input-and-btn input {
+  width: 75%;
+  padding: 1vw;
+}
+
+.input-and-btn button {
+  padding: 1vw;
+  width: 25%;
+  border: 1px solid transparent;
   color: rgb(255, 115, 0);
-  margin-top: 40px;
-  padding: 1vw 2vw;
-  background-color: white;
   border-radius: 30px;
+  font-weight: 900;
+  transition: 0.5s all;
+  cursor: pointer;
+}
+
+.input-and-btn button:hover {
+  background-color: rgb(255, 115, 0);
+  border: 1px solid white;
+  box-shadow: 0 0 10px white;
+  color: white;
+}
+
+.tasks {
+  border: 20px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  gap: 1vw;
+  background-color: #eee;
+  width: 100%;
+  list-style: none;
+  padding: 1vw;
+  border-radius: 30px;
+  height: 300px;
+  overflow: auto;
+}
+
+.tasks li {
+  width: 100%;
+  background-color: rgb(255, 115, 0);
+  padding: 0.5vw 2vw;
+  border-radius: 30px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.completed {
+  background-color: green !important;
+}
+
+.tasks li span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+
+.tasks li span i {
+  cursor: pointer;
 }
