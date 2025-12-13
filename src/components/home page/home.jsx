@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Nav from "../navbar/navbar";
 import "./home.css";
 import { useState } from "react";
 
 export default function Home() {
+  // const navigate = useNavigate();
   const [taskinput, settaskinput] = useState();
   const [currentUser, setcurrentUser] = useState(
     localStorage.getItem("currentUser")
