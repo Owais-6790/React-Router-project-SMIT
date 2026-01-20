@@ -1,4 +1,3 @@
-import { Link, useNavigate } from "react-router-dom";
 import Nav from "../navbar/navbar";
 import "./home.css";
 import { useState } from "react";
@@ -9,12 +8,12 @@ export default function Home() {
   const [currentUser, setcurrentUser] = useState(
     localStorage.getItem("currentUser")
       ? JSON.parse(localStorage.getItem("currentUser"))
-      : []
+      : [],
   );
   const [signupData, setsignupData] = useState(
     localStorage.getItem("signupData")
       ? JSON.parse(localStorage.getItem("signupData"))
-      : []
+      : [],
   );
   const [todos, settodos] = useState(returntodos() ? returntodos() : []);
   console.log(todos);
@@ -37,8 +36,8 @@ export default function Home() {
   function returntodos() {
     for (let i = 0; i < signupData.length; i++) {
       if (
-        currentUser.Username == signupData[i].Name &&
-        currentUser.Email == signupData[i].Email
+        currentUser.Username === signupData[i].Name &&
+        currentUser.Email === signupData[i].Email
       ) {
         return signupData[i].todos;
       }
@@ -48,8 +47,8 @@ export default function Home() {
   function addtasks() {
     for (let i = 0; i < signupData.length; i++) {
       if (
-        currentUser.Username == signupData[i].Name &&
-        currentUser.Email == signupData[i].Email
+        currentUser.Username === signupData[i].Name &&
+        currentUser.Email === signupData[i].Email
       ) {
         signupData[i].todos.push(taskinput);
         settodos([...signupData[i].todos]);
@@ -76,8 +75,8 @@ export default function Home() {
 
       for (let i = 0; i < signupData.length; i++) {
         if (
-          currentUser.Username == signupData[i].Name &&
-          currentUser.Email == signupData[i].Email
+          currentUser.Username === signupData[i].Name &&
+          currentUser.Email === signupData[i].Email
         ) {
           signupData[i].todos = finaltasklist;
           localStorage.setItem("signupData", JSON.stringify(signupData));
@@ -92,8 +91,8 @@ export default function Home() {
 
       for (let i = 0; i < signupData.length; i++) {
         if (
-          currentUser.Username == signupData[i].Name &&
-          currentUser.Email == signupData[i].Email
+          currentUser.Username === signupData[i].Name &&
+          currentUser.Email === signupData[i].Email
         ) {
           signupData[i].todos = todos;
           localStorage.setItem("signupData", JSON.stringify(signupData));

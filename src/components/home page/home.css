@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  height: 100vh;
 }
 
 .Box {
@@ -15,15 +15,19 @@
   padding: 4vw;
   color: white;
   border-radius: 40px;
-  width: 50%;
+  width: 80%;
+  height: 100vh;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.226);
+  scale: 0.8;
 }
 
 .Box h1 {
+  font-size: 2vw;
   margin-bottom: 1vw;
 }
 
 .input-and-btn {
+  font-size: 2vw;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,5 +1,4 @@
 import "./signup.css";
-import Nav from "../navbar/navbar";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -17,7 +16,7 @@ function Signup() {
   function Signupfunct() {
     if (Name && Email && Number && Password) {
       if (Email.endsWith("@gmail.com")) {
-        if (Number.startsWith("03") && Number.length == 11) {
+        if (Number.startsWith("03") && Number.length === 11) {
           alert("account created");
           const signupData = {
             Name: Name,
@@ -30,7 +29,7 @@ function Signup() {
           navigate("/login");
         } else {
           alert(
-            "Number must have 03 digits in the start and must be of 11 digits"
+            "Number must have 03 digits in the start and must be of 11 digits",
           );
         }
       } else {

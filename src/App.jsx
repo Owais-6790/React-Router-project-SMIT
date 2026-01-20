@@ -13,7 +13,7 @@ function App() {
   const [currentUser, setcurrentUser] = useState(
     localStorage.getItem("currentUser")
       ? JSON.parse(localStorage.getItem("currentUser"))
-      : null
+      : null,
   );
 
   return (

@@ -9,9 +9,9 @@ function navbar() {
           <h1>LOGO</h1>
           <div className="links">
             <Link to="/">Home</Link>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-            <a href="#">Product</a>
+            <a>About</a>
+            <a>Contact</a>
+            <a>Product</a>
           </div>
         </div>
         <button>
